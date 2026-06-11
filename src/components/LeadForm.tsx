@@ -14,6 +14,8 @@ export function LeadForm({ onSuccess }: LeadFormProps) {
   const [name, setName] = useState("");
   const [role, setRole] = useState("");
   const [phone, setPhone] = useState("");
+  const [email, setEmail] = useState("");
+  const [showEmailInput, setShowEmailInput] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [isSuccess, setIsSuccess] = useState(false);
@@ -26,6 +28,10 @@ export function LeadForm({ onSuccess }: LeadFormProps) {
 
     if (!role) {
       setError("Please enter your university name.");
+      return;
+    }
+    if (showEmailInput && email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      setError("Please enter a valid email address.");
       return;
     }
     // 1. Remove all spaces, dashes, and parentheses to normalize the number
@@ -43,7 +49,7 @@ export function LeadForm({ onSuccess }: LeadFormProps) {
       const res = await fetch("/api/leads", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, role, phone: cleanPhone, lang: language }),
+        body: JSON.stringify({ name, role, phone: cleanPhone, email, lang: language }),
       });
 
       const data = await res.json();
@@ -117,6 +123,26 @@ export function LeadForm({ onSuccess }: LeadFormProps) {
           className="w-full bg-white/5 border border-white/10 rounded-lg px-5 py-4 text-white placeholder-gray-500 focus:outline-none focus:border-bioluminance/50 transition-colors font-body"
         />
       </div>
+
+      {!showEmailInput ? (
+        <button
+          type="button"
+          onClick={() => setShowEmailInput(true)}
+          className="text-left text-sm text-gray-400 hover:text-white transition-colors font-body mb-2"
+        >
+          + Get more info via email
+        </button>
+      ) : (
+        <div>
+          <input
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            placeholder={strings.emailPlaceholder}
+            className="w-full bg-white/5 border border-white/10 rounded-lg px-5 py-4 text-white placeholder-gray-500 focus:outline-none focus:border-bioluminance/50 transition-colors font-body"
+          />
+        </div>
+      )}
 
       <button
         type="submit"

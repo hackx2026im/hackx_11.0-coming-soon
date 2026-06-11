@@ -120,38 +120,12 @@ function ColonSep() {
   );
 }
 
-/* ── Multilingual rotating announcement ── */
-const ANNOUNCEMENT_TEXTS = [
-  "Join the notification list and be the first to know when registrations officially go live.",
-  "තරඟාවලිය සඳහා ලියාපදිංචි කිරීම ආරම්භ වූ සැණින් තොරතුරු ලබාගැනීමට පහත විස්තර පුරවන්න.",
-  "போட்டிக்கான பதிவுகள் ஆரம்பித்தவுடன் தகவல்களைப் பெற கீழே உள்ள உங்கள் விவரங்களைப் பதிவு செய்யுங்கள்.",
-];
-
 function MultilingualAnnouncement() {
-  const [index, setIndex] = useState(0);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setIndex((prev) => (prev + 1) % ANNOUNCEMENT_TEXTS.length);
-    }, 3500);
-    return () => clearInterval(interval);
-  }, []);
-
   return (
-    <div className="relative w-full h-[4rem] sm:h-[3.5rem] overflow-hidden">
-      <AnimatePresence mode="wait">
-        <motion.p
-          key={index}
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -12 }}
-          transition={{ duration: 0.5, ease: "easeInOut" }}
-          className={`absolute inset-0 font-body ${index === 0 ? "text-sm sm:text-base" : "text-xs sm:text-sm"
-            } text-gray-400 leading-relaxed text-center flex items-center justify-center px-2`}
-        >
-          {ANNOUNCEMENT_TEXTS[index]}
-        </motion.p>
-      </AnimatePresence>
+    <div className="relative w-full overflow-hidden flex justify-center">
+      <p className="font-body text-sm sm:text-base text-gray-400 leading-relaxed text-center px-2">
+        Join the notification list and be the first to know when registrations officially go live.
+      </p>
     </div>
   );
 }
@@ -174,6 +148,8 @@ export function LeadModal({ isOpen, onClose }: LeadModalProps) {
   const [name, setName] = useState("");
   const [role, setRole] = useState("");
   const [phone, setPhone] = useState("");
+  const [email, setEmail] = useState("");
+  const [showEmailInput, setShowEmailInput] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [isSuccess, setIsSuccess] = useState(false);
@@ -184,6 +160,10 @@ export function LeadModal({ isOpen, onClose }: LeadModalProps) {
       setError("");
       if (!role) {
         setError("Please enter your university name.");
+        return;
+      }
+      if (showEmailInput && email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        setError("Please enter a valid email address.");
         return;
       }
       const cleanPhone = phone.replace(/[\s\-\(\)]/g, "");
@@ -203,6 +183,7 @@ export function LeadModal({ isOpen, onClose }: LeadModalProps) {
             name,
             role,
             phone: cleanPhone,
+            email,
             lang: language,
           }),
         });
@@ -217,7 +198,7 @@ export function LeadModal({ isOpen, onClose }: LeadModalProps) {
         setLoading(false);
       }
     },
-    [name, role, phone, language, onClose]
+    [name, role, phone, email, language, onClose]
   );
 
   if (!strings) return null;
@@ -375,6 +356,24 @@ export function LeadModal({ isOpen, onClose }: LeadModalProps) {
                       placeholder={strings.phonePlaceholder}
                       className="w-full bg-white/[0.04] border border-white/[0.08] rounded-xl px-4 py-3 sm:py-3.5 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-bioluminance/40 focus:bg-white/[0.06] transition-all duration-300 font-body"
                     />
+
+                    {!showEmailInput ? (
+                      <button
+                        type="button"
+                        onClick={() => setShowEmailInput(true)}
+                        className="text-left text-sm text-gray-400 hover:text-white transition-colors font-body mt-2 mb-2 ml-1"
+                      >
+                        + Get more info via email
+                      </button>
+                    ) : (
+                      <input
+                        type="email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        placeholder={strings.emailPlaceholder}
+                        className="w-full bg-white/[0.04] border border-white/[0.08] rounded-xl px-4 py-3 sm:py-3.5 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-bioluminance/40 focus:bg-white/[0.06] transition-all duration-300 font-body"
+                      />
+                    )}
 
                     {/* CTA */}
                     <button

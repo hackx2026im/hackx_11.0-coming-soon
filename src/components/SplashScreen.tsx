@@ -18,7 +18,7 @@ export function SplashScreen({ onComplete }: SplashScreenProps) {
     }, 2000);
 
     return () => clearTimeout(timer);
-  }, [onComplete]);
+  }, []);
 
   return (
     <AnimatePresence>

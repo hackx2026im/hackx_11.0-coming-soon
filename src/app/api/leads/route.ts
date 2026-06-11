@@ -3,7 +3,7 @@ import { supabase } from "@/lib/supabaseClient";
 
 export async function POST(req: Request) {
   try {
-    const { name, role, phone, lang } = await req.json();
+    const { name, role, phone, email, lang } = await req.json();
 
     if (!role || !phone) {
       return NextResponse.json(
@@ -19,6 +19,7 @@ export async function POST(req: Request) {
           name: name || null,
           role,
           phone,
+          email,
           lang,
         },
       ]);

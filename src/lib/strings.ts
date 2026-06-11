@@ -6,15 +6,16 @@ export const STRINGS = {
     namePlaceholder: "Your name (optional)",
     uniPlaceholder: "University Name (e.g. University of Kelaniya)",
     phonePlaceholder: "WhatsApp number (e.g. 07...)",
+    emailPlaceholder: "Email address",
     submitBtn: "Notify Me",
     successTitle: "You're in!",
-    successBody: "We'll WhatsApp you the moment registrations open.",
+    successBody: "We'll WhatsApp and email you the moment registrations open.",
     cardTitle: "Stay Updated",
-    cardBody: "Enter your WhatsApp number below to get notified the moment registrations go live.",
+    cardBody: "Enter your WhatsApp number and email below to get notified the moment registrations go live.",
 
     heroTitle: "COMING SOON",
     heroSubtitle1: "Sri Lanka's premier inter-university startup challenge.",
-    heroSubtitle2: "Empowering students to turn everyday ideas into real-world solutions.",
+    heroSubtitle2: "Empowering undergraduates to turn everyday ideas into real-world solutions.",
 
     aboutTitle: "Where Ideas Become Reality",
     aboutDesc: "Your idea could solve an everyday problem, become a product or service people would use, or even grow into a business. It could be a device that tells farmers the perfect time to harvest their crops, a smart streetlight that turns on only when someone is nearby, a tool that helps detect when a cow is unwell, or a simple app that improves life in your community. Whether you choose to present a physical mockup, a detailed business plan, or a prototype, what matters most is your unique creativity and problem-solving skills.",
@@ -24,7 +25,7 @@ export const STRINGS = {
     freedomDesc: "Build mobile apps, craft hardware prototypes, integrate AI tools, or pitch comprehensive business plans. We emphasize limitless innovation. Your creativity is the only boundary.",
 
     guidanceTitle: "National Guidance",
-    guidanceDesc: "Direct support from government.",
+    guidanceDesc: "Direct support from the government.",
     mentorshipTitle: "Elite Mentorship",
     mentorshipDesc: "Exclusive coaching from industry leaders for teams advancing from the semi-finals onwards.",
 
@@ -36,7 +37,7 @@ export const STRINGS = {
     schoolRepDesc: "All members must be from the same school.",
     beginnersTitle: "Open to Beginners",
     beginnersDesc: "The competition welcomes beginners and is open to all levels, with no restriction to specific categories or expertise.",
-    organizersText: "Organized by the Industrial Management Science Students' Association (IMSSA) of the Department of Industrial Management, University of Kelaniya, in partnership with the Ministry of Science and Technology and the National Science Foundation.",
+    organizersText: "Organized by the Industrial Management Science Students' Association of the Department of Industrial Management, University of Kelaniya, in partnership with the Ministry of Science and Technology and the National Science Foundation.",
   },
   si: {
     langScreen: "භාෂාව තෝරන්න",
@@ -45,11 +46,12 @@ export const STRINGS = {
     namePlaceholder: "ඔබේ නම (අත්‍යවශ්‍ය නොවේ)",
     uniPlaceholder: "විශ්වවිද්‍යාලයේ නම (උදා: කැලණිය විශ්වවිද්‍යාලය)",
     phonePlaceholder: "WhatsApp අංකය (උදා: 077 ...)",
+    emailPlaceholder: "ඊමේල් ලිපිනය (Email address)",
     submitBtn: "මට දැනුම් දෙන්න",
     successTitle: "සාර්ථකයි!",
-    successBody: "ලියාපදිංචිය ආරම්භ වූ වහාම අපි ඔබට WhatsApp පණිවිඩයක් මගින් දැනුම් දෙන්නෙමු.",
+    successBody: "ලියාපදිංචිය ආරම්භ වූ වහාම අපි ඔබට WhatsApp සහ ඊමේල් මගින් දැනුම් දෙන්නෙමු.",
     cardTitle: "යාවත්කාලීනව සිටින්න",
-    cardBody: "ලියාපදිංචිය ආරම්භ වූ වහාම දැනුම්දීමක් ලබාගැනීමට ඔබේ WhatsApp අංකය මෙහි ඇතුලත් කරන්න.",
+    cardBody: "ලියාපදිංචිය ආරම්භ වූ වහාම දැනුම්දීමක් ලබාගැනීමට ඔබේ WhatsApp අංකය සහ ඊමේල් ලිපිනය මෙහි ඇතුලත් කරන්න.",
 
     heroTitle: "COMING SOON",
     heroSubtitle1: "ශ්‍රී ලංකාවේ ප්‍රමුඛතම ජාතික අන්තර් පාසල් නව නිපැයුම් තරඟාවලිය.",
@@ -75,7 +77,7 @@ export const STRINGS = {
     schoolRepDesc: "සියලුම සාමාජිකයින් එකම පාසලේ විය යුතුය.",
     beginnersTitle: "ආධුනිකයින් සඳහා විවෘතයි",
     beginnersDesc: "සහභාගී වීම සඳහා ක්‍රමලේඛන (programming) හෝ ව්‍යාපාරික පළපුරුද්දක් අවශ්‍ය නොවේ.",
-    organizersText: "කැලණිය විශ්වවිද්‍යාලයේ කර්මාන්ත කළමනාකරණ අධ්‍යයනාංශයේ කර්මාන්ත කළමනාකරණ විද්‍යා ශිෂ්‍ය සංගමය (IMSSA) විසින්, විද්‍යා හා තාක්ෂණ අමාත්‍යාංශය සහ ජාතික විද්‍යා පදනම සමග එක්ව සංවිධානය කරනු ලබයි.",
+    organizersText: "කැලණිය විශ්වවිද්‍යාලයේ කර්මාන්ත කළමනාකරණ අධ්‍යයනාංශයේ කර්මාන්ත කළමනාකරණ විද්‍යා ශිෂ්‍ය සංගමය විසින්, විද්‍යා හා තාක්ෂණ අමාත්‍යාංශය සහ ජාතික විද්‍යා පදනම සමග එක්ව සංවිධානය කරනු ලබයි.",
   },
   ta: {
     langScreen: "மொழியைத் தேர்ந்தெடுக்கவும்",
@@ -84,11 +86,12 @@ export const STRINGS = {
     namePlaceholder: "உங்கள் பெயர் (விரும்பினால்)",
     uniPlaceholder: "பல்கலைக்கழகத்தின் பெயர் (உதா: களனிப் பல்கலைக்கழகம்)",
     phonePlaceholder: "WhatsApp எண் (உதா: 077 ...)",
+    emailPlaceholder: "மின்னஞ்சல் முகவரி (Email address)",
     submitBtn: "எனக்கு அறிவிக்கவும்",
     successTitle: "வெற்றிகரமாக பதிவு செய்யப்பட்டது!",
-    successBody: "பதிவுகள் தொடங்கியவுடன் உங்களுக்கு WhatsApp மூலம் அறிவிப்போம்.",
+    successBody: "பதிவுகள் தொடங்கியவுடன் உங்களுக்கு WhatsApp மற்றும் மின்னஞ்சல் மூலம் அறிவிப்போம்.",
     cardTitle: "தொடர்ந்து இணைந்திருங்கள்",
-    cardBody: "பதிவுகள் தொடங்கியவுடன் அறிவிப்பைப் பெற உங்கள் WhatsApp எண்ணை இங்கே உள்ளிடவும்.",
+    cardBody: "பதிவுகள் தொடங்கியவுடன் அறிவிப்பைப் பெற உங்கள் WhatsApp எண் மற்றும் மின்னஞ்சலை இங்கே உள்ளிடவும்.",
 
     heroTitle: "COMING SOON",
     heroSubtitle1: "இலங்கையின் முதன்மையான தேசிய பாடசாலைகளுக்கிடையிலான புத்தாக்கப் போட்டி.",
@@ -114,7 +117,7 @@ export const STRINGS = {
     schoolRepDesc: "அனைத்து உறுப்பினர்களும் ஒரே பாடசாலையைச் சேர்ந்தவர்களாக இருக்க வேண்டும்.",
     beginnersTitle: "ஆரம்பநிலையாளர்களுக்கும் திறக்கப்பட்டுள்ளது",
     beginnersDesc: "பங்குபெற நிரலாக்க அல்லது வணிக அனுபவம் தேவையில்லை.",
-    organizersText: "களனிப் பல்கலைக்கழகத்தின் கைத்தொழில் முகாமைத்துவத் திணைக்களத்தின் கைத்தொழில் முகாமைத்துவ விஞ்ஞான மாணவர் சங்கத்தினால் (IMSSA), விஞ்ஞான மற்றும் தொழில்நுட்ப அமைச்சு மற்றும் தேசிய விஞ்ஞான மன்றத்துடன் இணைந்து ஏற்பாடு செய்யப்பட்டுள்ளது.",
+    organizersText: "களனிப் பல்கலைக்கழகத்தின் கைத்தொழில் முகாமைத்துவத் திணைக்களத்தின் கைத்தொழில் முகாமைத்துவ விஞ்ஞான மாணவர் சங்கத்தினால், விஞ்ஞான மற்றும் தொழில்நுட்ப அமைச்சு மற்றும் தேசிய விஞ்ஞான மன்றத்துடன் இணைந்து ஏற்பாடு செய்யப்பட்டுள்ளது.",
   }
 };
 
