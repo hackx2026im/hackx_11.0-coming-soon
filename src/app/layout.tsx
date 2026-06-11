@@ -44,7 +44,7 @@ export const metadata: Metadata = {
   title: "hackX 11.0 | Coming Soon",
   description: "Sri Lanka's premier inter-university startup challenge.",
   icons: {
-    icon: "/hackx-logo.webp",
+    icon: "/Xlogo-favicon.png",
   },
 };
 
