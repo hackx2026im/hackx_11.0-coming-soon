@@ -1,0 +1,142 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-abyss: #010E13;
+  --color-deep-ocean: #052E3F;
+  --color-lagoon: #0A5C72;
+  --color-current-cta: #18A0C0;
+  --color-bioluminance: #72E5F8;
+
+  --font-display: var(--font-display);
+  --font-body: var(--font-body);
+  --font-mono: var(--font-mono);
+}
+
+:root {
+  color-scheme: dark;
+}
+
+body {
+  background-color: var(--color-abyss);
+  color: #ffffff;
+  font-family: var(--font-body);
+  /* Smooth scrolling for anchor links */
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar to match the theme */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-abyss);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-deep-ocean);
+  border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-lagoon);
+}
+
+/* Entrance animation for main content */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-in {
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+/* Hide scrollbar for timeline images */
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Selection color */
+::selection {
+  background: rgba(114, 229, 248, 0.3);
+  color: white;
+}
+
+/* ── Flip-card countdown timer ── */
+.flip-card {
+  position: relative;
+  display: inline-flex;
+  flex-direction: column;
+  border-radius: 0.3em;
+  box-shadow:
+    0 2px 8px rgba(0, 0, 0, 0.5),
+    0 0 20px rgba(114, 229, 248, 0.04);
+}
+
+.flip-card .top,
+.flip-card .bottom,
+.flip-card .top-flip,
+.flip-card .bottom-flip {
+  height: 0.75em;
+  line-height: 1;
+  padding: 0.25em 0.3em;
+  overflow: hidden;
+  font-family: var(--font-display);
+  font-size: inherit;
+  color: #ffffff;
+}
+
+.flip-card .top,
+.flip-card .top-flip {
+  background: linear-gradient(180deg, rgba(10, 92, 114, 0.25) 0%, rgba(5, 46, 63, 0.4) 100%);
+  border-top-left-radius: 0.3em;
+  border-top-right-radius: 0.3em;
+  border-bottom: 1px solid rgba(114, 229, 248, 0.08);
+}
+
+.flip-card .bottom,
+.flip-card .bottom-flip {
+  background: linear-gradient(180deg, rgba(5, 46, 63, 0.35) 0%, rgba(1, 14, 19, 0.6) 100%);
+  display: flex;
+  align-items: flex-end;
+  border-bottom-left-radius: 0.3em;
+  border-bottom-right-radius: 0.3em;
+}
+
+.flip-card .top-flip {
+  position: absolute;
+  width: 100%;
+  animation: flip-top 250ms ease-in;
+  transform-origin: bottom;
+  backface-visibility: hidden;
+}
+
+@keyframes flip-top {
+  100% {
+    transform: rotateX(90deg);
+  }
+}
+
+.flip-card .bottom-flip {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  animation: flip-bottom 250ms ease-out 250ms;
+  transform-origin: top;
+  transform: rotateX(90deg);
+  backface-visibility: hidden;
+}
+
+@keyframes flip-bottom {
+  100% {
+    transform: rotateX(0deg);
+  }
+}
