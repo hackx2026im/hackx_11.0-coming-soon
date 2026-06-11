@@ -16,7 +16,7 @@ export function RewardsSection() {
   ];
 
   return (
-    <section className="relative w-full py-16 md:py-24 px-4 md:px-8 bg-[#010E13] border-y border-white/[0.05]">
+    <section className="relative w-full py-16 md:py-24 px-4 md:px-8 bg-[#010814] border-y border-white/[0.05]">
       <div className="max-w-5xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 30 }}

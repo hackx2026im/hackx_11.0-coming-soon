@@ -1,56 +1,12 @@
 "use client";
 
-import React, { useState, useEffect, useRef } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { Compass, Users, TrendingUp, Volume2, VolumeX, Maximize2, Minimize2, X } from "lucide-react";
-import Player from "@vimeo/player";
+import React from "react";
+import { motion } from "framer-motion";
+import { Compass, Users } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 
 export function AboutSection() {
   const { strings } = useLanguage();
-  const [isMuted, setIsMuted] = useState(true);
-  const [isFullscreen, setIsFullscreen] = useState(false);
-  const [isVideoLoaded, setIsVideoLoaded] = useState(false);
-  const iframeRef = useRef<HTMLIFrameElement>(null);
-  const containerRef = useRef<HTMLDivElement>(null);
-  const playerRef = useRef<Player | null>(null);
-
-  useEffect(() => {
-    if (iframeRef.current && !playerRef.current) {
-      playerRef.current = new Player(iframeRef.current);
-      
-      // Hide the video until it actually starts playing to prevent white flashes or loading thumbnails
-      playerRef.current.on('play', () => {
-        setIsVideoLoaded(true);
-      });
-    }
-  }, []);
-
-  const toggleMute = () => {
-    if (playerRef.current) {
-      if (isMuted) {
-        playerRef.current.setVolume(1);
-        setIsMuted(false);
-      } else {
-        playerRef.current.setVolume(0);
-        setIsMuted(true);
-      }
-    }
-  };
-
-  const toggleFullscreen = () => {
-    setIsFullscreen(!isFullscreen);
-  };
-
-  const closeFullscreen = () => {
-    setIsFullscreen(false);
-    // When the modal closes, resume playing the background video
-    if (playerRef.current) {
-      setTimeout(() => {
-        playerRef.current?.play().catch((err) => console.log("Auto-resume failed:", err));
-      }, 500); // Wait for modal animation to finish unmounting the other iframe
-    }
-  };
 
   if (!strings) return null;
 
@@ -68,7 +24,7 @@ export function AboutSection() {
   ];
 
   return (
-    <section className="relative w-full py-16 md:py-24 px-4 md:px-8 bg-[#010E13] overflow-hidden">
+    <section className="relative w-full py-16 md:py-24 px-4 md:px-8 bg-[#010814] overflow-hidden">
       {/* Ambient background glow to lift the darkness */}
       <div className="absolute top-1/4 left-1/4 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-bioluminance/5 blur-[120px] rounded-full pointer-events-none" />
       
@@ -82,7 +38,7 @@ export function AboutSection() {
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           className="text-center w-full"
         >
-          <h2 className="font-display text-3xl md:text-5xl text-white tracking-wider uppercase drop-shadow-[0_0_15px_rgba(114,229,248,0.1)]">
+          <h2 className="font-display text-3xl md:text-5xl text-white tracking-wider uppercase drop-shadow-[0_0_15px_rgba(91,187,255,0.1)]">
             {strings.aboutTitle}
           </h2>
         </motion.div>
@@ -119,53 +75,39 @@ export function AboutSection() {
             </motion.div>
           </div>
 
-          {/* Right Side: Video wrapped in Glass Card */}
+          {/* Right Side: Who Can Apply Card */}
           <div className="flex-1 w-full flex flex-col justify-center mt-8 lg:mt-0 relative z-10">
             <motion.div
               initial={{ opacity: 0, x: 40, scale: 0.95 }}
               whileInView={{ opacity: 1, x: 0, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-              className="w-full relative p-3 sm:p-5 md:p-6 rounded-[2rem] bg-white/[0.03] backdrop-blur-xl border border-white/[0.08] shadow-[0_8px_32px_rgba(0,0,0,0.5)] group/card overflow-hidden"
+              className="w-full relative p-6 sm:p-8 rounded-[2rem] bg-white/[0.03] backdrop-blur-xl border border-white/[0.08] shadow-[0_8px_32px_rgba(0,0,0,0.5)] group/card overflow-hidden"
             >
-              {/* Subtle IM logo color gradient in the card background */}
-              <div className="absolute inset-0 bg-gradient-to-br from-[#4ab2a6]/10 via-transparent to-transparent pointer-events-none" />
+              <div className="absolute inset-0 bg-gradient-to-br from-bioluminance/10 via-transparent to-transparent pointer-events-none" />
               
-              {/* Video Container (Thumbnail) */}
-              <div className="w-full relative aspect-video rounded-[1.25rem] overflow-hidden shadow-[0_0_20px_rgba(0,0,0,0.5)] bg-black/50 border border-white/10 group-hover/card:scale-[1.02] transform transition-all duration-500 group/video">
-                <iframe
-                  ref={iframeRef}
-                  src="https://player.vimeo.com/video/1198058883?autoplay=1&muted=1&background=1&transparent=0"
-                  className={`absolute inset-0 w-full h-full border-0 z-0 pointer-events-none transition-opacity duration-1000 ${isVideoLoaded ? 'opacity-100' : 'opacity-0'}`}
-                  allow="autoplay; fullscreen; picture-in-picture"
-                  allowFullScreen
-                />
-                
-                {/* Fallback loading skeleton/background while video buffers */}
-                {!isVideoLoaded && (
-                  <div className="absolute inset-0 z-0 bg-[#010E13] flex items-center justify-center">
-                    <div className="w-8 h-8 md:w-10 md:h-10 border-4 border-bioluminance/20 border-t-bioluminance rounded-full animate-spin" />
-                  </div>
-                )}
-                
-                {/* Glass UI Controls Overlay */}
-                <div className="absolute bottom-4 right-4 z-20 flex items-center gap-3 opacity-0 group-hover/video:opacity-100 transition-opacity duration-300">
-                  <button
-                    onClick={(e) => { e.stopPropagation(); toggleMute(); }}
-                    className="p-2.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white hover:bg-[#4ab2a6] hover:text-[#010E13] hover:border-transparent hover:scale-110 transition-all shadow-lg"
-                    title={isMuted ? "Unmute" : "Mute"}
-                  >
-                    {isMuted ? <VolumeX className="w-4 h-4 md:w-5 md:h-5" /> : <Volume2 className="w-4 h-4 md:w-5 md:h-5" />}
-                  </button>
-                  <button
-                    onClick={(e) => { e.stopPropagation(); setIsFullscreen(true); }}
-                    className="p-2.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white hover:bg-[#4ab2a6] hover:text-[#010E13] hover:border-transparent hover:scale-110 transition-all shadow-lg"
-                    title="Maximize to Popup"
-                  >
-                    <Maximize2 className="w-4 h-4 md:w-5 md:h-5" />
-                  </button>
-                </div>
-              </div>
+              <h3 className="font-display text-2xl text-bioluminance tracking-wider uppercase mb-6 relative z-10 text-center">
+                Who Can Apply?
+              </h3>
+              
+              <ul className="flex flex-col gap-5 font-body text-gray-300 text-[15px] leading-relaxed relative z-10">
+                <li className="flex gap-4 items-start">
+                  <div className="mt-2 w-1.5 h-1.5 rounded-full bg-bioluminance shadow-[0_0_8px_rgba(91,187,255,0.8)] flex-shrink-0" />
+                  <p>Undergraduate students from recognized universities and higher education institutions in Sri Lanka.</p>
+                </li>
+                <li className="flex gap-4 items-start">
+                  <div className="mt-2 w-1.5 h-1.5 rounded-full bg-bioluminance shadow-[0_0_8px_rgba(91,187,255,0.8)] flex-shrink-0" />
+                  <p>Teams must consist of undergraduates of the same university. (Multiple teams from one university is allowed)</p>
+                </li>
+                <li className="flex gap-4 items-start">
+                  <div className="mt-2 w-1.5 h-1.5 rounded-full bg-bioluminance shadow-[0_0_8px_rgba(91,187,255,0.8)] flex-shrink-0" />
+                  <p>Participants must submit an original and innovative solution to a real-world problem.</p>
+                </li>
+                <li className="flex gap-4 items-start">
+                  <div className="mt-2 w-1.5 h-1.5 rounded-full bg-bioluminance shadow-[0_0_8px_rgba(91,187,255,0.8)] flex-shrink-0" />
+                  <p>Teams from any field of study are welcome to apply.</p>
+                </li>
+              </ul>
             </motion.div>
           </div>
 
@@ -221,7 +163,7 @@ export function AboutSection() {
                     
                     <div className="relative z-10 flex flex-col items-center gap-5">
                       {/* Icon Container */}
-                      <div className="relative p-4 rounded-2xl bg-white/[0.02] border border-white/[0.05] group-hover/item:border-bioluminance/30 group-hover/item:bg-bioluminance/10 transition-all duration-500 ease-out transform group-hover/item:-translate-y-1 group-hover/item:shadow-[0_0_20px_rgba(114,229,248,0.15)]">
+                      <div className="relative p-4 rounded-2xl bg-white/[0.02] border border-white/[0.05] group-hover/item:border-bioluminance/30 group-hover/item:bg-bioluminance/10 transition-all duration-500 ease-out transform group-hover/item:-translate-y-1 group-hover/item:shadow-[0_0_20px_rgba(91,187,255,0.15)]">
                         <Icon className="w-6 h-6 md:w-7 md:h-7 text-gray-500 transition-colors duration-500 group-hover/item:text-bioluminance" />
                       </div>
                       
@@ -243,40 +185,6 @@ export function AboutSection() {
         </motion.div>
 
       </div>
-
-      {/* Fullscreen Video Modal */}
-      <AnimatePresence>
-        {isFullscreen && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-8 bg-[#010E13]/90 backdrop-blur-md"
-            onClick={closeFullscreen}
-          >
-            <motion.div
-              layoutId="video-player"
-              transition={{ type: "spring", damping: 25, stiffness: 200 }}
-              className="relative w-full max-w-6xl aspect-video bg-black rounded-2xl overflow-hidden shadow-[0_0_60px_rgba(0,0,0,0.8)] border border-white/10"
-              onClick={(e) => e.stopPropagation()}
-            >
-              <button
-                onClick={closeFullscreen}
-                className="absolute top-4 right-4 z-30 p-2.5 bg-black/60 hover:bg-black/90 hover:scale-110 rounded-full text-white transition-all backdrop-blur-md border border-white/10"
-              >
-                <X className="w-6 h-6" />
-              </button>
-              <iframe
-                src="https://player.vimeo.com/video/1198058883?autoplay=1"
-                className="w-full h-full border-0 z-20 absolute inset-0"
-                allow="autoplay; fullscreen; picture-in-picture"
-                allowFullScreen
-              />
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
     </section>
   );
 }

@@ -1,9 +1,8 @@
 "use client";
 
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState } from "react";
 import { useLanguage } from "@/context/LanguageContext";
-import { Loader2, ChevronDown } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+import { Loader2 } from "lucide-react";
 
 interface LeadFormProps {
   onSuccess?: () => void;
@@ -15,22 +14,9 @@ export function LeadForm({ onSuccess }: LeadFormProps) {
   const [name, setName] = useState("");
   const [role, setRole] = useState("");
   const [phone, setPhone] = useState("");
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const dropdownRef = useRef<HTMLDivElement>(null);
-
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [isSuccess, setIsSuccess] = useState(false);
-
-  useEffect(() => {
-    function handleClickOutside(event: MouseEvent) {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
-        setIsDropdownOpen(false);
-      }
-    }
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, []);
 
   if (!strings || !language) return null;
 
@@ -39,7 +25,7 @@ export function LeadForm({ onSuccess }: LeadFormProps) {
     setError("");
 
     if (!role) {
-      setError("Please select a role.");
+      setError("Please enter your university name.");
       return;
     }
     // 1. Remove all spaces, dashes, and parentheses to normalize the number
@@ -111,46 +97,14 @@ export function LeadForm({ onSuccess }: LeadFormProps) {
         />
       </div>
 
-      <div className="relative" ref={dropdownRef}>
-        <button
-          type="button"
-          onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-          className={`w-full flex items-center justify-between bg-white/5 border ${isDropdownOpen ? "border-bioluminance/50" : "border-white/10"} rounded-lg px-5 py-4 focus:outline-none transition-colors font-body ${role ? "text-white" : "text-gray-500"}`}
-        >
-          <span>{role || strings.rolePlaceholder}</span>
-          <ChevronDown className={`w-5 h-5 text-gray-500 transition-transform ${isDropdownOpen ? "rotate-180" : ""}`} />
-        </button>
-
-        <AnimatePresence>
-          {isDropdownOpen && (
-            <motion.div
-              initial={{ opacity: 0, y: -5 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -5 }}
-              transition={{ duration: 0.2 }}
-              className="absolute top-full left-0 right-0 mt-2 bg-[#0a0a0a] border border-bioluminance/30 rounded-xl overflow-hidden z-[100] shadow-[0_10px_40px_rgba(0,0,0,0.8)] shadow-bioluminance/10"
-            >
-              <div className="py-1">
-                {strings.roleOptions.map((opt) => (
-                  <button
-                    key={opt}
-                    type="button"
-                    onClick={() => {
-                      setRole(opt);
-                      setIsDropdownOpen(false);
-                    }}
-                    className="w-full text-left px-5 py-3.5 hover:bg-white/5 text-gray-300 hover:text-white transition-colors font-body border-b border-white/5 last:border-0 flex items-center justify-between group"
-                  >
-                    <span>{opt}</span>
-                    {role === opt && (
-                      <div className="w-2 h-2 rounded-full bg-bioluminance shadow-[0_0_8px_rgba(114,229,248,0.8)]" />
-                    )}
-                  </button>
-                ))}
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
+      <div>
+        <input
+          type="text"
+          value={role}
+          onChange={(e) => setRole(e.target.value)}
+          placeholder={strings.uniPlaceholder}
+          className="w-full bg-white/5 border border-white/10 rounded-lg px-5 py-4 text-white placeholder-gray-500 focus:outline-none focus:border-bioluminance/50 transition-colors font-body"
+        />
       </div>
 
       <div>

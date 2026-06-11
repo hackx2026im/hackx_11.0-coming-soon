@@ -1,11 +1,11 @@
 @import "tailwindcss";
 
 @theme inline {
-  --color-abyss: #010E13;
-  --color-deep-ocean: #052E3F;
-  --color-lagoon: #0A5C72;
-  --color-current-cta: #18A0C0;
-  --color-bioluminance: #72E5F8;
+  --color-abyss: #010814;
+  --color-deep-ocean: #041A3A;
+  --color-lagoon: #0A3B78;
+  --color-current-cta: #1A6FD4;
+  --color-bioluminance: #5BBBFF;
 
   --font-display: var(--font-display);
   --font-body: var(--font-body);
@@ -66,7 +66,7 @@ body {
 
 /* Selection color */
 ::selection {
-  background: rgba(114, 229, 248, 0.3);
+  background: rgba(91, 187, 255, 0.3);
   color: white;
 }
 
@@ -78,7 +78,7 @@ body {
   border-radius: 0.3em;
   box-shadow:
     0 2px 8px rgba(0, 0, 0, 0.5),
-    0 0 20px rgba(114, 229, 248, 0.04);
+    0 0 20px rgba(91, 187, 255, 0.04);
 }
 
 .flip-card .top,
@@ -96,15 +96,15 @@ body {
 
 .flip-card .top,
 .flip-card .top-flip {
-  background: linear-gradient(180deg, rgba(10, 92, 114, 0.25) 0%, rgba(5, 46, 63, 0.4) 100%);
+  background: linear-gradient(180deg, rgba(10, 59, 120, 0.25) 0%, rgba(4, 26, 58, 0.4) 100%);
   border-top-left-radius: 0.3em;
   border-top-right-radius: 0.3em;
-  border-bottom: 1px solid rgba(114, 229, 248, 0.08);
+  border-bottom: 1px solid rgba(91, 187, 255, 0.08);
 }
 
 .flip-card .bottom,
 .flip-card .bottom-flip {
-  background: linear-gradient(180deg, rgba(5, 46, 63, 0.35) 0%, rgba(1, 14, 19, 0.6) 100%);
+  background: linear-gradient(180deg, rgba(4, 26, 58, 0.35) 0%, rgba(1, 8, 20, 0.6) 100%);
   display: flex;
   align-items: flex-end;
   border-bottom-left-radius: 0.3em;

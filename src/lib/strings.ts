@@ -2,10 +2,9 @@ export const STRINGS = {
   en: {
     langScreen: "Choose your language",
     modalTitle: "Stay in the loop",
-    modalSubtitle: "Get notified the moment hackX Jr. 9.0 officially launches.",
+    modalSubtitle: "Get notified the moment hackX 11.0 officially launches.",
     namePlaceholder: "Your name (optional)",
-    rolePlaceholder: "I am a...",
-    roleOptions: ["Student", "Teacher", "Principal", "Other"],
+    uniPlaceholder: "University Name (e.g. University of Kelaniya)",
     phonePlaceholder: "WhatsApp number (e.g. 07...)",
     submitBtn: "Notify Me",
     successTitle: "You're in!",
@@ -14,7 +13,7 @@ export const STRINGS = {
     cardBody: "Enter your WhatsApp number below to get notified the moment registrations go live.",
 
     heroTitle: "COMING SOON",
-    heroSubtitle1: "Sri Lanka's premiere national inter-school innovation competition.",
+    heroSubtitle1: "Sri Lanka's premier inter-university startup challenge.",
     heroSubtitle2: "Empowering students to turn everyday ideas into real-world solutions.",
 
     aboutTitle: "Where Ideas Become Reality",
@@ -42,10 +41,9 @@ export const STRINGS = {
   si: {
     langScreen: "භාෂාව තෝරන්න",
     modalTitle: "යාවත්කාලීනව සිටින්න",
-    modalSubtitle: "hackX Jr. 9.0 නිල වශයෙන් ආරම්භ වූ විගසම දැනුම්දීමක් ලබා ගන්න.",
+    modalSubtitle: "hackX 11.0 නිල වශයෙන් ආරම්භ වූ විගසම දැනුම්දීමක් ලබා ගන්න.",
     namePlaceholder: "ඔබේ නම (අත්‍යවශ්‍ය නොවේ)",
-    rolePlaceholder: "මම...",
-    roleOptions: ["ශිෂ්‍යයෙක්", "ගුරුවරයෙක්", "විදුහල්පතිවරයෙක්", "වෙනත්"],
+    uniPlaceholder: "විශ්වවිද්‍යාලයේ නම (උදා: කැලණිය විශ්වවිද්‍යාලය)",
     phonePlaceholder: "WhatsApp අංකය (උදා: 077 ...)",
     submitBtn: "මට දැනුම් දෙන්න",
     successTitle: "සාර්ථකයි!",
@@ -82,10 +80,9 @@ export const STRINGS = {
   ta: {
     langScreen: "மொழியைத் தேர்ந்தெடுக்கவும்",
     modalTitle: "தொடர்பில் இருங்கள்",
-    modalSubtitle: "hackX Jr. 9.0 அதிகாரப்பூர்வமாக தொடங்கியவுடன் அறிவிப்பைப் பெறுங்கள்.",
+    modalSubtitle: "hackX 11.0 அதிகாரப்பூர்வமாக தொடங்கியவுடன் அறிவிப்பைப் பெறுங்கள்.",
     namePlaceholder: "உங்கள் பெயர் (விரும்பினால்)",
-    rolePlaceholder: "நான் ஒரு...",
-    roleOptions: ["மாணவன் / மாணவி", "ஆசிரியர்", "அதிபர்", "வேறு"],
+    uniPlaceholder: "பல்கலைக்கழகத்தின் பெயர் (உதா: களனிப் பல்கலைக்கழகம்)",
     phonePlaceholder: "WhatsApp எண் (உதா: 077 ...)",
     submitBtn: "எனக்கு அறிவிக்கவும்",
     successTitle: "வெற்றிகரமாக பதிவு செய்யப்பட்டது!",

@@ -30,9 +30,9 @@ export function Hero() {
           <source src="/Hero_Loop.mp4" type="video/mp4" />
         </video>
         {/* Dark Gradient Overlay for readability */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#010E13]/80 via-[#010E13]/60 to-[#010E13] z-10" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#010814]/80 via-[#010814]/60 to-[#010814] z-10" />
         {/* Tall bottom fade for seamless blend into next section */}
-        <div className="absolute -bottom-1 left-0 right-0 h-40 bg-gradient-to-b from-transparent to-[#010E13] z-20" />
+        <div className="absolute -bottom-1 left-0 right-0 h-40 bg-gradient-to-b from-transparent to-[#010814] z-20" />
       </motion.div>
 
       {/* Content with scroll fade */}
@@ -54,10 +54,10 @@ export function Hero() {
             className="relative w-40 h-16 md:w-56 md:h-24 mb-6"
           >
             <Image
-              src="/hackxlogo.webp"
-              alt="hackX Jr. 9.0"
+              src="/hackx-logo.webp"
+              alt="hackX 11.0"
               fill
-              className="object-contain drop-shadow-[0_0_15px_rgba(114,229,248,0.3)]"
+              className="object-contain drop-shadow-[0_0_15px_rgba(91,187,255,0.3)]"
               priority
             />
           </motion.div>

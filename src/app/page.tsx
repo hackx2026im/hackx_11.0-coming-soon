@@ -71,7 +71,7 @@ export default function Home() {
   }, [showSplash, showLangSelector]);
 
   return (
-    <main className="min-h-screen bg-[#010E13] text-white overflow-x-hidden relative">
+    <main className="min-h-screen bg-[#010814] text-white overflow-x-hidden relative">
       {showMainContent && ENABLE_MULTILANGUAGE && (
         <div className="fixed top-6 right-6 md:top-8 md:right-8 z-[90] flex bg-white/[0.02] border border-white/10 rounded-full p-1 backdrop-blur-md shadow-2xl">
           {[

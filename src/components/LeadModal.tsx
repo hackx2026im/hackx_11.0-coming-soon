@@ -3,7 +3,7 @@
 import React, { useState, useEffect, useRef, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLanguage } from "@/context/LanguageContext";
-import { X, Loader2, ChevronDown } from "lucide-react";
+import { X, Loader2 } from "lucide-react";
 
 interface LeadModalProps {
   isOpen: boolean;
@@ -174,31 +174,16 @@ export function LeadModal({ isOpen, onClose }: LeadModalProps) {
   const [name, setName] = useState("");
   const [role, setRole] = useState("");
   const [phone, setPhone] = useState("");
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [isSuccess, setIsSuccess] = useState(false);
-  const dropdownRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    function handleClickOutside(event: MouseEvent) {
-      if (
-        dropdownRef.current &&
-        !dropdownRef.current.contains(event.target as Node)
-      ) {
-        setIsDropdownOpen(false);
-      }
-    }
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, []);
 
   const handleSubmit = useCallback(
     async (e: React.FormEvent) => {
       e.preventDefault();
       setError("");
       if (!role) {
-        setError("Please select a role.");
+        setError("Please enter your university name.");
         return;
       }
       const cleanPhone = phone.replace(/[\s\-\(\)]/g, "");
@@ -257,10 +242,10 @@ export function LeadModal({ isOpen, onClose }: LeadModalProps) {
             animate={{ scale: 1, opacity: 1, y: 0 }}
             exit={{ scale: 0.92, opacity: 0, y: 30 }}
             transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-            className="relative w-full max-w-xl max-h-[95vh] overflow-y-auto rounded-2xl border border-white/[0.08] shadow-[0_0_80px_rgba(114,229,248,0.08),0_0_0_1px_rgba(114,229,248,0.05)] hide-scrollbar"
+            className="relative w-full max-w-xl max-h-[95vh] overflow-y-auto rounded-2xl border border-white/[0.08] shadow-[0_0_80px_rgba(91,187,255,0.08),0_0_0_1px_rgba(91,187,255,0.05)] hide-scrollbar"
             style={{
               background:
-                "radial-gradient(ellipse at top, rgba(10,92,114,0.18) 0%, rgba(1,14,19,0.97) 60%)",
+                "radial-gradient(ellipse at top, rgba(10,59,120,0.18) 0%, rgba(1,8,20,0.97) 60%)",
             }}
           >
             {/* Top glow bar */}
@@ -282,9 +267,9 @@ export function LeadModal({ isOpen, onClose }: LeadModalProps) {
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.15, duration: 0.6 }}
-                className="font-body text-[10px] sm:text-xs uppercase tracking-[0.25em] text-bioluminance/70 mb-3 sm:mb-4"
+                className="font-body text-[10px] sm:text-xs tracking-[0.25em] text-bioluminance/70 mb-3 sm:mb-4"
               >
-                hackX Jr. 9.0
+                hackX 11.0
               </motion.p>
               <motion.h2
                 initial={{ opacity: 0, y: 10 }}
@@ -372,54 +357,14 @@ export function LeadModal({ isOpen, onClose }: LeadModalProps) {
                       className="w-full bg-white/[0.04] border border-white/[0.08] rounded-xl px-4 py-3 sm:py-3.5 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-bioluminance/40 focus:bg-white/[0.06] transition-all duration-300 font-body"
                     />
 
-                    {/* Role dropdown */}
-                    <div className="relative" ref={dropdownRef}>
-                      <button
-                        type="button"
-                        onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-                        className={`w-full flex items-center justify-between bg-white/[0.04] border ${isDropdownOpen
-                          ? "border-bioluminance/40"
-                          : "border-white/[0.08]"
-                          } rounded-xl px-4 py-3 sm:py-3.5 text-sm focus:outline-none transition-all duration-300 font-body ${role ? "text-white" : "text-gray-500"
-                          }`}
-                      >
-                        <span>{role || strings.rolePlaceholder}</span>
-                        <ChevronDown
-                          className={`w-4 h-4 text-gray-500 transition-transform duration-300 ${isDropdownOpen ? "rotate-180" : ""
-                            }`}
-                        />
-                      </button>
-                      <AnimatePresence>
-                        {isDropdownOpen && (
-                          <motion.div
-                            initial={{ opacity: 0, y: 5 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            exit={{ opacity: 0, y: 5 }}
-                            transition={{ duration: 0.2 }}
-                            className="absolute bottom-full left-0 right-0 mb-1.5 bg-[#080f14] border border-bioluminance/20 rounded-xl overflow-hidden z-[100] shadow-[0_-10px_40px_rgba(0,0,0,0.8)]"
-                          >
-                            <div className="py-1">
-                              {strings.roleOptions.map((opt) => (
-                                <button
-                                  key={opt}
-                                  type="button"
-                                  onClick={() => {
-                                    setRole(opt);
-                                    setIsDropdownOpen(false);
-                                  }}
-                                  className="w-full text-left px-4 py-3 hover:bg-white/5 text-gray-300 hover:text-white transition-colors font-body text-sm border-b border-white/5 last:border-0 flex items-center justify-between"
-                                >
-                                  <span>{opt}</span>
-                                  {role === opt && (
-                                    <div className="w-1.5 h-1.5 rounded-full bg-bioluminance shadow-[0_0_6px_rgba(114,229,248,0.8)]" />
-                                  )}
-                                </button>
-                              ))}
-                            </div>
-                          </motion.div>
-                        )}
-                      </AnimatePresence>
-                    </div>
+                    {/* University Name */}
+                    <input
+                      type="text"
+                      value={role}
+                      onChange={(e) => setRole(e.target.value)}
+                      placeholder={strings.uniPlaceholder}
+                      className="w-full bg-white/[0.04] border border-white/[0.08] rounded-xl px-4 py-3 sm:py-3.5 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-bioluminance/40 focus:bg-white/[0.06] transition-all duration-300 font-body"
+                    />
 
                     {/* Phone */}
                     <input

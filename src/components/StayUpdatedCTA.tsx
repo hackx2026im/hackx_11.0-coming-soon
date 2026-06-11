@@ -16,14 +16,14 @@ export function StayUpdatedCTA() {
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <Image
-          src="/IMG_056.jpg"
+          src="/subg.png"
           alt="Stay Updated Background"
           fill
-          className="object-cover opacity-80"
+          className="object-cover opacity-100"
         />
         {/* Overlay gradient for readability and smooth blending */}
-        <div className="absolute inset-0 bg-[#010E13]/60 mix-blend-multiply" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#010E13] via-[#010E13]/40 to-[#010E13]" />
+        <div className="absolute inset-0 bg-[#010814]/20" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#010814] via-transparent to-[#010814]" />
       </div>
 
       <motion.div

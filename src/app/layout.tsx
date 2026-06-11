@@ -41,10 +41,10 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "hackX Jr. 9.0 | Coming Soon",
-  description: "Sri Lanka's premiere national inter-school innovation competition.",
+  title: "hackX 11.0 | Coming Soon",
+  description: "Sri Lanka's premier inter-university startup challenge.",
   icons: {
-    icon: "/hackxlogo.webp",
+    icon: "/hackx-logo.webp",
   },
 };
 

@@ -11,7 +11,7 @@ export function Footer() {
   if (!strings) return null;
 
   return (
-    <footer className="w-full bg-[#010E13] relative z-10 flex flex-col">
+    <footer className="w-full bg-[#010814] relative z-10 flex flex-col">
       <div className="w-full py-8 px-4 md:px-8">
         <div className="max-w-[1400px] w-full mx-auto grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-20 xl:gap-32 items-center lg:items-stretch px-4 lg:px-8">
 
@@ -25,14 +25,14 @@ export function Footer() {
           >
             <div className="relative w-56 h-20 md:w-64 md:h-24 lg:w-[280px] lg:h-[100px] mb-8 md:mb-10 mx-auto">
               <Image
-                src="/hackxlogo.webp"
-                alt="hackX Jr 2026 Logo"
+                src="/hackx-logo.webp"
+                alt="hackX 11.0 Logo"
                 fill
                 className="object-contain object-center"
               />
             </div>
             <p className="font-body text-[15px] md:text-base text-gray-300 leading-relaxed mb-8 md:mb-10 font-light tracking-wide w-full max-w-[420px] mx-auto text-center md:text-justify" style={{ textAlignLast: 'center' }}>
-              Inter-School hackathon for school students across Sri Lanka. A flagship event organized by the Department of Industrial Management, University of Kelaniya.
+              Inter-University Startup Challenge for all undergraduates of universities in Sri Lanka. Premier event of the Department of Industrial Management, University of Kelaniya.
             </p>
             <div className="flex items-center justify-center gap-5 md:gap-6 w-full max-w-md mx-auto">
               <div className="h-12 md:h-14 w-[110px] md:w-[120px] overflow-hidden flex justify-start items-center">
@@ -57,17 +57,13 @@ export function Footer() {
               </h3>
 
               <div className="flex flex-col w-full gap-3.5 mb-10">
-                <a href="tel:+94772086681" className="w-full px-6 py-3 rounded-full bg-white/[0.02] border border-white/10 hover:border-white/20 hover:bg-white/5 transition-all duration-300 flex items-center justify-between group backdrop-blur-md hover:-translate-y-0.5">
-                  <span className="text-gray-400 font-body text-sm group-hover:text-white transition-colors">Harshana</span>
-                  <span className="text-white font-mono text-sm group-hover:text-[#00E5FF] transition-colors">+94 77 208 6681</span>
+                <a href="tel:+94707253446" className="w-full px-6 py-3 rounded-full bg-white/[0.02] border border-white/10 hover:border-white/20 hover:bg-white/5 transition-all duration-300 flex items-center justify-between group backdrop-blur-md hover:-translate-y-0.5">
+                  <span className="text-gray-400 font-body text-sm group-hover:text-white transition-colors">Tharushi Kulathunga</span>
+                  <span className="text-white font-mono text-sm group-hover:text-[#00E5FF] transition-colors">+94 70 725 3446</span>
                 </a>
-                <a href="tel:+94715435636" className="w-full px-6 py-3 rounded-full bg-white/[0.02] border border-white/10 hover:border-white/20 hover:bg-white/5 transition-all duration-300 flex items-center justify-between group backdrop-blur-md hover:-translate-y-0.5">
-                  <span className="text-gray-400 font-body text-sm group-hover:text-white transition-colors">Lavindi</span>
-                  <span className="text-white font-mono text-sm group-hover:text-[#00E5FF] transition-colors">+94 71 543 5636</span>
-                </a>
-                <a href="tel:+94724170019" className="w-full px-6 py-3 rounded-full bg-white/[0.02] border border-white/10 hover:border-white/20 hover:bg-white/5 transition-all duration-300 flex items-center justify-between group backdrop-blur-md hover:-translate-y-0.5">
-                  <span className="text-gray-400 font-body text-sm group-hover:text-white transition-colors">Thuvarakan</span>
-                  <span className="text-white font-mono text-sm group-hover:text-[#00E5FF] transition-colors">+94 72 417 0019</span>
+                <a href="tel:+94772868600" className="w-full px-6 py-3 rounded-full bg-white/[0.02] border border-white/10 hover:border-white/20 hover:bg-white/5 transition-all duration-300 flex items-center justify-between group backdrop-blur-md hover:-translate-y-0.5">
+                  <span className="text-gray-400 font-body text-sm group-hover:text-white transition-colors">Praveen Madawalge</span>
+                  <span className="text-white font-mono text-sm group-hover:text-[#00E5FF] transition-colors">+94 77 286 8600</span>
                 </a>
               </div>
 
@@ -136,7 +132,7 @@ export function Footer() {
       >
         <div className="w-full flex flex-col md:flex-row justify-between items-center gap-4 text-xs md:text-sm text-gray-500 font-body text-center md:text-left">
           <p>Organized by The Industrial Management Science Students&apos; Association</p>
-          <p className="md:text-right">© 2026 hackXJr All rights reserved.</p>
+          <p className="md:text-right">© 2026 hackX 11.0 All rights reserved.</p>
         </div>
       </motion.div>
     </footer>
