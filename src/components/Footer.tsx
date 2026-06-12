@@ -57,13 +57,19 @@ export function Footer() {
               </h3>
 
               <div className="flex flex-col w-full gap-3.5 mb-10">
-                <a href="tel:+94707253446" className="w-full px-6 py-3 rounded-full bg-white/[0.02] border border-white/10 hover:border-white/20 hover:bg-white/5 transition-all duration-300 flex items-center justify-between group backdrop-blur-md hover:-translate-y-0.5">
-                  <span className="text-gray-400 font-body text-sm group-hover:text-white transition-colors">Tharushi Kulathunga</span>
-                  <span className="text-white font-mono text-sm group-hover:text-[#00E5FF] transition-colors">+94 70 725 3446</span>
+                <a href="tel:+94772868600" className="w-full px-5 py-3 rounded-2xl bg-white/[0.02] border border-white/10 hover:border-white/20 hover:bg-white/5 transition-all duration-300 flex items-center justify-between group backdrop-blur-md hover:-translate-y-0.5">
+                  <div className="flex flex-col text-left">
+                    <span className="text-gray-300 font-body text-sm group-hover:text-white transition-colors">Praveen Madawalge</span>
+                    <span className="text-gray-500 font-body text-[11px] md:text-xs mt-0.5 group-hover:text-gray-400 transition-colors">(Chief Coordinator)</span>
+                  </div>
+                  <span className="text-white font-mono text-sm whitespace-nowrap group-hover:text-[#00E5FF] transition-colors pl-2">+94 77 286 8600</span>
                 </a>
-                <a href="tel:+94772868600" className="w-full px-6 py-3 rounded-full bg-white/[0.02] border border-white/10 hover:border-white/20 hover:bg-white/5 transition-all duration-300 flex items-center justify-between group backdrop-blur-md hover:-translate-y-0.5">
-                  <span className="text-gray-400 font-body text-sm group-hover:text-white transition-colors">Praveen Madawalge</span>
-                  <span className="text-white font-mono text-sm group-hover:text-[#00E5FF] transition-colors">+94 77 286 8600</span>
+                <a href="tel:+94707253446" className="w-full px-5 py-3 rounded-2xl bg-white/[0.02] border border-white/10 hover:border-white/20 hover:bg-white/5 transition-all duration-300 flex items-center justify-between group backdrop-blur-md hover:-translate-y-0.5">
+                  <div className="flex flex-col text-left">
+                    <span className="text-gray-300 font-body text-sm group-hover:text-white transition-colors">Tharushi Kulathunga</span>
+                    <span className="text-gray-500 font-body text-[11px] md:text-xs mt-0.5 group-hover:text-gray-400 transition-colors">(Chief Coordinator)</span>
+                  </div>
+                  <span className="text-white font-mono text-sm whitespace-nowrap group-hover:text-[#00E5FF] transition-colors pl-2">+94 70 725 3446</span>
                 </a>
               </div>
 
