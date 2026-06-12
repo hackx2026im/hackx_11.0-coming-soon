@@ -146,7 +146,7 @@ export function LeadModal({ isOpen, onClose }: LeadModalProps) {
 
   /* ── Form state ── */
   const [name, setName] = useState("");
-  const [role, setRole] = useState("");
+  const [university, setUniversity] = useState("");
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
   const [showEmailInput, setShowEmailInput] = useState(false);
@@ -158,7 +158,7 @@ export function LeadModal({ isOpen, onClose }: LeadModalProps) {
     async (e: React.FormEvent) => {
       e.preventDefault();
       setError("");
-      if (!role) {
+      if (!university) {
         setError("Please enter your university name.");
         return;
       }
@@ -181,7 +181,7 @@ export function LeadModal({ isOpen, onClose }: LeadModalProps) {
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
             name,
-            role,
+            university,
             phone: cleanPhone,
             email,
             lang: language,
@@ -198,7 +198,7 @@ export function LeadModal({ isOpen, onClose }: LeadModalProps) {
         setLoading(false);
       }
     },
-    [name, role, phone, email, language, onClose]
+    [name, university, phone, email, language, onClose]
   );
 
   if (!strings) return null;
@@ -341,8 +341,8 @@ export function LeadModal({ isOpen, onClose }: LeadModalProps) {
                     {/* University Name */}
                     <input
                       type="text"
-                      value={role}
-                      onChange={(e) => setRole(e.target.value)}
+                      value={university}
+                      onChange={(e) => setUniversity(e.target.value)}
                       placeholder={strings.uniPlaceholder}
                       className="w-full bg-white/[0.04] border border-white/[0.08] rounded-xl px-4 py-3 sm:py-3.5 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-bioluminance/40 focus:bg-white/[0.06] transition-all duration-300 font-body"
                     />

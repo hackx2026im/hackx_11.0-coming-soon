@@ -12,7 +12,7 @@ export function LeadForm({ onSuccess }: LeadFormProps) {
   const { strings, language } = useLanguage();
 
   const [name, setName] = useState("");
-  const [role, setRole] = useState("");
+  const [university, setUniversity] = useState("");
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
   const [showEmailInput, setShowEmailInput] = useState(false);
@@ -26,7 +26,7 @@ export function LeadForm({ onSuccess }: LeadFormProps) {
     e.preventDefault();
     setError("");
 
-    if (!role) {
+    if (!university) {
       setError("Please enter your university name.");
       return;
     }
@@ -49,7 +49,7 @@ export function LeadForm({ onSuccess }: LeadFormProps) {
       const res = await fetch("/api/leads", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, role, phone: cleanPhone, email, lang: language }),
+        body: JSON.stringify({ name, university, phone: cleanPhone, email, lang: language }),
       });
 
       const data = await res.json();
@@ -106,8 +106,8 @@ export function LeadForm({ onSuccess }: LeadFormProps) {
       <div>
         <input
           type="text"
-          value={role}
-          onChange={(e) => setRole(e.target.value)}
+          value={university}
+          onChange={(e) => setUniversity(e.target.value)}
           placeholder={strings.uniPlaceholder}
           className="w-full bg-white/5 border border-white/10 rounded-lg px-5 py-4 text-white placeholder-gray-500 focus:outline-none focus:border-bioluminance/50 transition-colors font-body"
         />
