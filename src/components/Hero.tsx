@@ -25,9 +25,12 @@ export function Hero() {
           loop
           muted
           playsInline
+          onEnded={(e) => {
+            e.currentTarget.play();
+          }}
           className="w-full h-full object-cover scale-110"
         >
-          <source src="/Hero_Loop.mp4" type="video/mp4" />
+          <source src="/Hero%20Video%20For%20Hackx%20Coming%20Soon.mp4" type="video/mp4" />
         </video>
         {/* Dark Gradient Overlay for readability */}
         <div className="absolute inset-0 bg-gradient-to-b from-[#010814]/80 via-[#010814]/60 to-[#010814] z-10" />
