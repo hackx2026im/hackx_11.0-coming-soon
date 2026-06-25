@@ -11,7 +11,7 @@ interface LeadModalProps {
 }
 
 /* ── Registration target date ── */
-const REGISTRATION_DATE = new Date("2026-06-23T00:00:00+05:30");
+const REGISTRATION_DATE = new Date("2026-07-01T00:00:00+05:30");
 
 function getTimeLeft() {
   const now = new Date();

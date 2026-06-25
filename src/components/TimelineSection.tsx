@@ -21,7 +21,7 @@ export function TimelineSection() {
 
   const events = [
     {
-      date: "June 23, 2026",
+      date: "July 1, 2026",
       title: "Registration Opens",
       desc: "Applications open for all undergraduates across the country.",
       images: [],
