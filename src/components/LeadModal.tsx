@@ -10,115 +10,7 @@ interface LeadModalProps {
   onClose: () => void;
 }
 
-/* ── Registration target date ── */
-const REGISTRATION_DATE = new Date("2026-07-01T00:00:00+05:30");
-
-function getTimeLeft() {
-  const now = new Date();
-  const diff = Math.max(0, REGISTRATION_DATE.getTime() - now.getTime());
-  return {
-    days: Math.floor(diff / (1000 * 60 * 60 * 24)),
-    hours: Math.floor((diff / (1000 * 60 * 60)) % 24),
-    minutes: Math.floor((diff / (1000 * 60)) % 60),
-    seconds: Math.floor((diff / 1000) % 60),
-  };
-}
-
-/* ── Flip card that mimics the classic split-flap display ── */
-function FlipCard({ value }: { value: number }) {
-  const display = String(value);
-  const prevRef = useRef(display);
-  const cardRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const prev = prevRef.current;
-    if (prev === display) return;
-    prevRef.current = display;
-
-    const el = cardRef.current;
-    if (!el) return;
-
-    // Remove old animation elements
-    el.querySelectorAll(".top-flip, .bottom-flip").forEach((n) => n.remove());
-
-    // Create top-flip (shows OLD value, flips down)
-    const topFlip = document.createElement("div");
-    topFlip.classList.add("top-flip");
-    topFlip.textContent = prev;
-
-    // Create bottom-flip (shows NEW value, flips up into place)
-    const bottomFlip = document.createElement("div");
-    bottomFlip.classList.add("bottom-flip");
-    bottomFlip.textContent = display;
-
-    // Update the static bottom half to new value immediately
-    const topEl = el.querySelector(".top") as HTMLElement;
-    const bottomEl = el.querySelector(".bottom") as HTMLElement;
-
-    el.appendChild(topFlip);
-    el.appendChild(bottomFlip);
-
-    // After the top half finishes flipping, update it
-    topFlip.addEventListener("animationend", () => {
-      if (topEl) topEl.textContent = display;
-      topFlip.remove();
-    });
-
-    bottomFlip.addEventListener("animationend", () => {
-      if (bottomEl) bottomEl.textContent = display;
-      bottomFlip.remove();
-    });
-
-    // Update bottom immediately so it shows through
-    if (bottomEl) bottomEl.textContent = display;
-  }, [display]);
-
-  return (
-    <div className="flip-card" ref={cardRef}>
-      <div className="top">{display}</div>
-      <div className="bottom">{display}</div>
-    </div>
-  );
-}
-
-/* ── A time segment: two flip cards (tens + ones) with a label ── */
-function TimerSegment({
-  value,
-  label,
-}: {
-  value: number;
-  label: string;
-}) {
-  const tens = Math.floor(value / 10);
-  const ones = value % 10;
-
-  return (
-    <div className="flex flex-col items-center gap-1 sm:gap-1.5">
-      <div className="flex gap-[2px] text-[1.1rem] sm:text-[1.4rem] md:text-[1.7rem]">
-        <FlipCard value={tens} />
-        <FlipCard value={ones} />
-      </div>
-      <span className="text-[8px] sm:text-[9px] md:text-[10px] uppercase tracking-[0.2em] text-bioluminance/60 font-body">
-        {label}
-      </span>
-    </div>
-  );
-}
-
-/* ── Colon separator ── */
-function ColonSep() {
-  return (
-    <motion.div
-      animate={{ opacity: [1, 0.2, 1] }}
-      transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-      className="flex flex-col gap-1 sm:gap-1.5 items-center justify-center self-start h-[1.5em] sm:h-[1.5em] md:h-[1.5em] select-none"
-      style={{ fontSize: "1.1rem" }}
-    >
-      <div className="w-1 h-1 sm:w-1.5 sm:h-1.5 rounded-full bg-bioluminance/50" />
-      <div className="w-1 h-1 sm:w-1.5 sm:h-1.5 rounded-full bg-bioluminance/50" />
-    </motion.div>
-  );
-}
+// Timer components and helper functions removed
 
 function MultilingualAnnouncement() {
   return (
@@ -136,13 +28,7 @@ function MultilingualAnnouncement() {
 export function LeadModal({ isOpen, onClose }: LeadModalProps) {
   const { strings, language } = useLanguage();
 
-  /* ── Countdown ── */
-  const [time, setTime] = useState(getTimeLeft);
-  useEffect(() => {
-    if (!isOpen) return;
-    const id = setInterval(() => setTime(getTimeLeft()), 1000);
-    return () => clearInterval(id);
-  }, [isOpen]);
+  // Countdown state and effect removed
 
   /* ── Form state ── */
   const [name, setName] = useState("");
@@ -258,24 +144,10 @@ export function LeadModal({ isOpen, onClose }: LeadModalProps) {
                 transition={{ delay: 0.25, duration: 0.6 }}
                 className="font-display text-xl sm:text-2xl md:text-3xl text-white mb-6 sm:mb-8 leading-tight"
               >
-                Registrations<br />Open In
+                Registrations<br />Opening Soon
               </motion.h2>
 
-              {/* ── Flip-Card Countdown Timer ── */}
-              <motion.div
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 0.35, duration: 0.7, ease: "easeOut" }}
-                className="flex items-start gap-2 sm:gap-3 md:gap-4 mb-6 sm:mb-8"
-              >
-                <TimerSegment value={time.days} label="Days" />
-                <ColonSep />
-                <TimerSegment value={time.hours} label="Hours" />
-                <ColonSep />
-                <TimerSegment value={time.minutes} label="Minutes" />
-                <ColonSep />
-                <TimerSegment value={time.seconds} label="Seconds" />
-              </motion.div>
+              {/* Timer UI removed */}
 
               {/* ── Multilingual rotating announcement ── */}
               <motion.div
